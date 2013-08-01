@@ -2,8 +2,8 @@ from setuptools import setup
 
 setup(
     name='filesequence',
-    version='0.1.1',
-    description='Python HTTP for Humans.',
+    version='0.1.2',
+    description='Write to an indexed sequence of files using the standard Python file API',
     long_description=open('README.md').read(),
     license=open('LICENSE').read(),
     author='Christopher Brown',
@@ -14,7 +14,7 @@ setup(
         'filesequence': 'filesequence'
     },
     package_data={
-        None: ['LICENSE']
+        '': ['LICENSE']
     },
     include_package_data=True,
     install_requires=[],
