@@ -1,10 +1,13 @@
 from setuptools import setup
 
+__version__ = 'N/A'
+execfile('filesequence/version.py')  # overwrites __version__ global
+
 setup(
     name='filesequence',
-    version='0.1.2',
+    version=__version__,
     description='Write to an indexed sequence of files using the standard Python file API',
-    long_description=open('README.md').read(),
+    long_description=open('.README.rst').read(),
     license=open('LICENSE').read(),
     author='Christopher Brown',
     author_email='io@henrian.com',

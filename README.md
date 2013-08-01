@@ -65,7 +65,45 @@ optional arguments:
 
 ## TODO
 
-* Support reading.
+* Support reading (flags `r` and `r+`).
+
+## Development
+
+This package is published to PyPI at [pypi.python.org/pypi/filesequence](https://pypi.python.org/pypi/filesequence/).
+
+Instructions for publishing:
+
+1. Convert latest README Markdown to reStructuredText, because PyPI can't handle anything but reStructuredText
+```bash
+pandoc --from=markdown --to=rst --output=.README.rst README.md
+```
+
+2. Increase version in [`filesequence/version.py`](filesequence/version.py).
+```diff
+-__version__ = '0.1.2'
++__version__ = '0.1.3'
+```
+
+3. Tag latest
+```bash
+git tag -a v`filesequence --version` -m `filesequence --version`
+```
+
+4. Commit your staged changes (presumably you changed something)
+```bash
+git commit
+```
+
+5. Push (Github will automatically prepare the static version, if needed)
+```bash
+git push
+```
+
+6. Publish
+```bash
+python setup.py register
+```
+
 
 ## License
 

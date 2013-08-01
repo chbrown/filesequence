@@ -1,5 +1,8 @@
 import os.path
 import itertools
+from filesequence import version
+
+__version__ = version.__version__
 
 # I want to export an 'open' function, but can't without overwriting the builtin
 # global 'open', which I need for my own purposes. So, alias it here to 'builtin_open'.
@@ -111,9 +114,17 @@ def main():
         help='Maximum bytes per file')
     parser.add_argument('--pattern', type=str, default='file.%02d',
         help='Filename string pattern: generate filenames in sequence by interpolating `pattern %% indices.next()`')
+    parser.add_argument('--version', action='store_true', help='Print version and exit')
     opts = parser.parse_args()
 
     filenames = interpolator(opts.pattern, xrange(1000))
+
+    if opts.version:
+        print __version__
+        exit(0)
+
+    if sys.stdin.isatty():
+        raise IOError('You must provide input via STDIN')
 
     with FileSequence(filenames, opts.limit) as output:
         for line in sys.stdin:
