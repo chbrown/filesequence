@@ -84,14 +84,14 @@ pandoc --from=markdown --to=rst --output=.README.rst README.md
 +__version__ = '0.1.3'
 ```
 
-3. Tag latest
-```bash
-git tag -a v`filesequence --version` -m `filesequence --version`
-```
-
-4. Commit your staged changes (presumably you changed something)
+3. Commit your staged changes (presumably you changed something)
 ```bash
 git commit
+```
+
+4. Tag latest
+```bash
+git tag -a v`filesequence --version` -m `filesequence --version`
 ```
 
 5. Push (Github will automatically prepare the static version, if needed)
