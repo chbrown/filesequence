@@ -67,32 +67,32 @@ Instructions for publishing:
 
 1. Convert latest README Markdown to reStructuredText, because PyPI can't handle anything but reStructuredText
 
-      pandoc README.md -o .README.rst
+        pandoc README.md -o .README.rst
 
 2. Increase version in [`filesequence/version.py`](filesequence/version.py).
 
-      -__version__ = '0.1.2'
-      +__version__ = '0.1.3'
+        -__version__ = '0.1.2'
+        +__version__ = '0.1.3'
 
 3. Rebuild since you changed the version
 
-      python setup.py develop
+        python setup.py develop
 
 4. Commit your staged changes (presumably you changed something)
 
-      git commit
+        git commit
 
 5. Tag latest
 
-      git tag -a v`python setup.py --version` -m `python setup.py --version`
+        git tag -a v`python setup.py --version` -m `python setup.py --version`
 
 6. Push (Github will automatically prepare the static version, if needed)
 
-      git push
+        git push
 
 7. Publish
 
-      python setup.py register
+        python setup.py register
 
 ## License
 
