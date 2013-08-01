@@ -84,22 +84,27 @@ pandoc --from=markdown --to=rst --output=.README.rst README.md
 +__version__ = '0.1.3'
 ```
 
-3. Commit your staged changes (presumably you changed something)
+4. Rebuild since you changed the version
+```bash
+python setup.py develop
+```
+
+4. Commit your staged changes (presumably you changed something)
 ```bash
 git commit
 ```
 
-4. Tag latest
+5. Tag latest
 ```bash
 git tag -a v`filesequence --version` -m `filesequence --version`
 ```
 
-5. Push (Github will automatically prepare the static version, if needed)
+6. Push (Github will automatically prepare the static version, if needed)
 ```bash
 git push
 ```
 
-6. Publish
+7. Publish
 ```bash
 python setup.py register
 ```
