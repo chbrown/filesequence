@@ -8,40 +8,34 @@ Each call to the opened FileSequence's `write` function will potentially create 
 
 ### Installation
 
-```sh
-pip install filesequence
-```
+    pip install filesequence
 
 ### API
 
 You can simply use a FileSequence object as if it were a file.
 
-* `filesequence.open` returns a FileSequence object.
-* `FileSequence.write(line)` takes a line and writes it to the next available file.
+* `filesequence.open(...)` returns a `FileSequence` object.
+* `my_file_sequence.write(line)` takes a line and writes it to the next available file.
 
 Note that FileSequence requires `with` wrapping, as opposed to the Python built-in `open()`:
 
-```python```
-import filesequence
+    import filesequence
 
-filenames = filesequence.interpolator('numbers-%02d.txt', xrange(1000))
+    filenames = filesequence.interpolator('numbers-%02d.txt', xrange(1000))
 
-with filesequence.open(filenames, 1000000) as out:
-    for a in xrange(1000):
-        for b in xrange(1000):
-            out.write('# %d * %d = %d\n' % (a, b, a * b))
-```
+    with filesequence.open(filenames, 1000000) as out:
+        for a in xrange(1000):
+            for b in xrange(1000):
+                out.write('# %d * %d = %d\n' % (a, b, a * b))
 
 Now you have a huge multiplication table in 20 different files that are 1MB or less! So awesome!
 
 Want to keep going?
 
-```python
-filenames = filesequence.interpolator('numbers-%02d.txt', xrange(1000))
+    filenames = filesequence.interpolator('numbers-%02d.txt', xrange(1000))
 
-with filesequence.open(filenames, 1000000, 'a') as out:
-    ...
-```
+    with filesequence.open(filenames, 1000000, 'a') as out:
+        ...
 
 The 'a' flag will make the sequence jump to the last existing file, and start writing from there.
 
@@ -49,19 +43,17 @@ The 'a' flag will make the sequence jump to the last existing file, and start wr
 
 A `filesequence` script will be installed to your `PATH`. This script reads STDIN line by line and command line arguments for the filename `pattern` and filesize limit (see `filesequence --help`), and writes out a series of files of at most that filesize and without breaking any lines.
 
-* `filesequence --help`
+    $ filesequence --help
 
-```
-usage: filesequence [-h] [--limit LIMIT] [--pattern PATTERN]
+    usage: filesequence [-h] [--limit LIMIT] [--pattern PATTERN]
 
-Split STDIN into a sequence of files
+    Split STDIN into a sequence of files
 
-optional arguments:
-  -h, --help         show this help message and exit
-  --limit LIMIT      Maximum bytes per file (default: 50000000)
-  --pattern PATTERN  Filename string pattern: generate filenames in sequence
-                     by interpolating `pattern % indices.next()` (default: file.%02d)
-```
+    optional arguments:
+      -h, --help         show this help message and exit
+      --limit LIMIT      Maximum bytes per file (default: 50000000)
+      --pattern PATTERN  Filename string pattern: generate filenames in sequence
+                         by interpolating `pattern % indices.next()` (default: split.%02d)
 
 ## TODO
 
@@ -74,42 +66,34 @@ This package is published to PyPI at [pypi.python.org/pypi/filesequence](https:/
 Instructions for publishing:
 
 1. Convert latest README Markdown to reStructuredText, because PyPI can't handle anything but reStructuredText
-```bash
-pandoc --from=markdown --to=rst --output=.README.rst README.md
-```
+
+      pandoc README.md -o .README.rst
 
 2. Increase version in [`filesequence/version.py`](filesequence/version.py).
-```diff
--__version__ = '0.1.2'
-+__version__ = '0.1.3'
-```
+
+      -__version__ = '0.1.2'
+      +__version__ = '0.1.3'
 
 3. Rebuild since you changed the version
-```bash
-python setup.py develop
-```
+
+      python setup.py develop
 
 4. Commit your staged changes (presumably you changed something)
-```bash
-git commit
-```
+
+      git commit
 
 5. Tag latest
-```bash
-git tag -a v`filesequence --version` -m `filesequence --version`
-```
+
+      git tag -a v`python setup.py --version` -m `python setup.py --version`
 
 6. Push (Github will automatically prepare the static version, if needed)
-```bash
-git push
-```
+
+      git push
 
 7. Publish
-```bash
-python setup.py register
-```
 
+      python setup.py register
 
 ## License
 
-Copyright © 2013 Christopher Brown. [MIT Licensed](LICENSE).
+Copyright (c) 2013 Christopher Brown. [MIT Licensed](LICENSE).

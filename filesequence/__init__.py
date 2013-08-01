@@ -112,7 +112,7 @@ def main():
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     parser.add_argument('--limit', type=int, default=50000000,
         help='Maximum bytes per file')
-    parser.add_argument('--pattern', type=str, default='file.%02d',
+    parser.add_argument('--pattern', type=str, default='split.%02d',
         help='Filename string pattern: generate filenames in sequence by interpolating `pattern %% indices.next()`')
     parser.add_argument('--version', action='store_true', help='Print version and exit')
     opts = parser.parse_args()
