@@ -84,7 +84,7 @@ pandoc --from=markdown --to=rst --output=.README.rst README.md
 +__version__ = '0.1.3'
 ```
 
-4. Rebuild since you changed the version
+3. Rebuild since you changed the version
 ```bash
 python setup.py develop
 ```
