@@ -114,14 +114,10 @@ def main():
         help='Maximum bytes per file')
     parser.add_argument('--pattern', type=str, default='split.%02d',
         help='Filename string pattern: generate filenames in sequence by interpolating `pattern %% indices.next()`')
-    parser.add_argument('--version', action='store_true', help='Print version and exit')
+    parser.add_argument('--version', action='version', version=__version__)
     opts = parser.parse_args()
 
     filenames = interpolator(opts.pattern, xrange(1000))
-
-    if opts.version:
-        print __version__
-        exit(0)
 
     if sys.stdin.isatty():
         raise IOError('You must provide input via STDIN')
