@@ -23,5 +23,13 @@ setup(
             'filesequence = filesequence.cli:main',
         ],
     },
+    classifiers=[
+        'Development Status :: 3 - Alpha',
+        'License :: OSI Approved :: MIT License',
+        'Programming Language :: Python',
+        'Programming Language :: Python :: 2.7',
+        'Topic :: System :: Filesystems',
+        'Topic :: Text Processing :: General',
+    ],
     **kw
 )

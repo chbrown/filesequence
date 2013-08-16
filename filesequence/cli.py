@@ -11,12 +11,14 @@ def main():
         dims = Popen(['stty', 'size'], stdout=PIPE).stdout.read().split()
         os.environ['COLUMNS'] = dims[1]
 
-    parser = argparse.ArgumentParser(description='Write STDIN into a sequence of files, splitting only at newlines',
+    parser = argparse.ArgumentParser(
+        description='Write STDIN into a sequence of files, splitting only at newlines',
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     parser.add_argument('--limit', type=int, default=50000000,
         help='Maximum bytes per file')
     parser.add_argument('--pattern', type=str, default='split.%02d',
-        help='Filename string pattern: generate filenames in sequence by interpolating `pattern %% indices.next()`')
+        help='Filename string pattern: generate filenames in sequence by interpolating (%%) '
+        'this pattern with an autoincrementing integer [0, 1000)')
     parser.add_argument('--version', action='version', version=filesequence.__version__)
     opts = parser.parse_args()
 
