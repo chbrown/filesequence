@@ -102,4 +102,5 @@ This package is published to PyPI at
 License
 -------
 
-Copyright (c) 2013 Christopher Brown. `MIT Licensed <LICENSE>`__.
+Copyright (c) 2013 Christopher Brown. `MIT
+Licensed <https://raw.github.com/chbrown/filesequence/master/LICENSE>`__.

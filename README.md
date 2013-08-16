@@ -73,4 +73,4 @@ This package is published to PyPI at [pypi.python.org/pypi/filesequence](https:/
 
 ## License
 
-Copyright (c) 2013 Christopher Brown. [MIT Licensed](LICENSE).
+Copyright (c) 2013 Christopher Brown. [MIT Licensed](https://raw.github.com/chbrown/filesequence/master/LICENSE).
