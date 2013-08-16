@@ -90,9 +90,14 @@ Instructions for publishing:
 
         git push
 
-7. Publish
+7. Publish (will be on PyPI, but not every setuptools incarnation will be able to get to it)
 
         python setup.py register
+
+8. Upload (add to [PyPI/simple](https://pypi.python.org/simple/filesequence/),
+   which allows some of the older distutils / setuptools distribution to install it)
+
+        python setup.py sdist upload
 
 ## License
 
