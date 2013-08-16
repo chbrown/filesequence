@@ -72,15 +72,17 @@ breaking any lines.
 
     $ filesequence --help
 
-    usage: filesequence [-h] [--limit LIMIT] [--pattern PATTERN]
+    usage: cli.py [-h] [--limit LIMIT] [--pattern PATTERN] [--version]
 
-    Split STDIN into a sequence of files
+    Write STDIN into a sequence of files, splitting only at newlines
 
     optional arguments:
       -h, --help         show this help message and exit
       --limit LIMIT      Maximum bytes per file (default: 50000000)
       --pattern PATTERN  Filename string pattern: generate filenames in sequence
-                         by interpolating `pattern % indices.next()` (default: split.%02d)
+                         by interpolating `pattern % indices.next()`
+                         (default: split.%02d)
+      --version          show program's version number and exit
 
 TODO
 ----
@@ -93,7 +95,9 @@ Development
 This package is published to PyPI at
 `pypi.python.org/pypi/filesequence <https://pypi.python.org/pypi/filesequence/>`__.
 
-Instructions for publishing:
+-  Run ``python publish.py -n`` to print out the suggested publish
+   sequence.
+-  Run ``python publish.py`` to run the suggested publish sequence.
 
 License
 -------
