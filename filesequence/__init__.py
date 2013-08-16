@@ -1,8 +1,8 @@
 import os.path
 import itertools
-from filesequence import version
+import pkg_resources
 
-__version__ = version.__version__
+__version__ = pkg_resources.get_distribution('filesequence').version
 
 # I want to export an 'open' function, but can't without overwriting the builtin
 # global 'open', which I need for my own purposes. So, alias it here to 'builtin_open'.
@@ -36,19 +36,21 @@ class FileSequence(object):
 
         if flag in ['a', 'a+']:
             # seek to the end of the data, the last existing file in the
-            # sequence. If there are no files, self._current_index should be
-            # None, meaning the next time we need to write, it should create
-            # a new file.
+            # sequence. If there are no files, last_existing_filename will be
+            # the empty list, current_filename will be the first item from
+            # self.filenames, and the next time we need to write, it should
+            # create a new file.
             last_existing_filename = []
-            for filename in self.filenames:
-                if os.path.exists(filename):
-                    last_existing_filename = [filename]
+            for current_filename in self.filenames:
+                if os.path.exists(current_filename):
+                    last_existing_filename = [current_filename]
                 else:
                     break
-            # backtrack: push the latest unused value (the unopened file) back onto our filenames,
-            #   as well as the file that demonstrated that it did not exist.
-            # itertools.chain simply iterates through its iterable arguments, flattening
-            self.filenames = itertools.chain(last_existing_filename + [filename], self.filenames)
+            # backtrack: push the latest unused value (the unopened file)
+            # back onto our filenames, as well as the file that demonstrated
+            # that it did not exist. itertools.chain simply iterates through
+            # its iterable arguments, flattening.
+            self.filenames = itertools.chain(last_existing_filename + [current_filename], self.filenames)
 
     def __enter__(self):
         self.advance()
@@ -102,26 +104,3 @@ def open(*args, **kw):
 def interpolator(pattern, indices):
     for index in indices:
         yield pattern % index
-
-
-def main():
-    import sys
-    import argparse
-
-    parser = argparse.ArgumentParser(description='Split STDIN into a sequence of files',
-        formatter_class=argparse.ArgumentDefaultsHelpFormatter)
-    parser.add_argument('--limit', type=int, default=50000000,
-        help='Maximum bytes per file')
-    parser.add_argument('--pattern', type=str, default='split.%02d',
-        help='Filename string pattern: generate filenames in sequence by interpolating `pattern %% indices.next()`')
-    parser.add_argument('--version', action='version', version=__version__)
-    opts = parser.parse_args()
-
-    filenames = interpolator(opts.pattern, xrange(1000))
-
-    if sys.stdin.isatty():
-        raise IOError('You must provide input via STDIN')
-
-    with FileSequence(filenames, opts.limit) as output:
-        for line in sys.stdin:
-            output.write(line)

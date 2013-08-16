@@ -1,0 +1,15 @@
+{
+  "name": "filesequence",
+  "version": "0.1.6",
+  "description": "Write to an indexed sequence of files using the standard Python file API",
+  "homepage": "https://github.com/chbrown/filesequence",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/chbrown/filesequence.git"
+  },
+  "author": {
+    "name": "Christopher Brown",
+    "email": "io@henrian.com"
+  },
+  "license": "MIT"
+}

@@ -1,1 +1,1 @@
-include README.md .README.rst LICENSE
+include README.md README.rst LICENSE package.json

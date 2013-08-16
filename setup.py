@@ -1,30 +1,27 @@
-from setuptools import setup
+from setuptools import setup, find_packages
+import json
 
-__version__ = 'N/A'
-execfile('filesequence/version.py')  # overwrites __version__ global
+
+def npm_to_setuptools(package):
+    '''This is a one-off but could be refactored into some packaging helper.'''
+    author = package.pop('author')
+    # rename and collapse a few of the fields
+    kw = dict(url=package.pop('homepage'), author=author['name'], author_email=author['email'])
+    # don't use license or repository values from the package.json spec
+    kw.update((key, str(value)) for key, value in package.items() if key not in ['license', 'repository'])
+    return kw
+
+package = json.load(open('package.json'))
+kw = npm_to_setuptools(package)
 
 setup(
-    name='filesequence',
-    version=__version__,
-    description='Write to an indexed sequence of files using the standard Python file API',
-    long_description=open('.README.rst').read(),
+    long_description=open('README.rst').read(),
     license=open('LICENSE').read(),
-    author='Christopher Brown',
-    author_email='io@henrian.com',
-    url='https://github.com/chbrown/filesequence',
-    packages=['filesequence'],
-    package_dir={
-        'filesequence': 'filesequence'
-    },
-    package_data={
-        '': ['LICENSE']
-    },
-    include_package_data=True,
-    install_requires=[],
+    packages=find_packages(),
     entry_points={
         'console_scripts': [
-            'filesequence = filesequence:main',
+            'filesequence = filesequence.cli:main',
         ],
     },
-    zip_safe=True,
+    **kw
 )

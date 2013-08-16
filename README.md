@@ -45,59 +45,31 @@ A `filesequence` script will be installed to your `PATH`. This script reads STDI
 
     $ filesequence --help
 
-    usage: filesequence [-h] [--limit LIMIT] [--pattern PATTERN]
+    usage: cli.py [-h] [--limit LIMIT] [--pattern PATTERN] [--version]
 
-    Split STDIN into a sequence of files
+    Write STDIN into a sequence of files, splitting only at newlines
 
     optional arguments:
       -h, --help         show this help message and exit
       --limit LIMIT      Maximum bytes per file (default: 50000000)
       --pattern PATTERN  Filename string pattern: generate filenames in sequence
-                         by interpolating `pattern % indices.next()` (default: split.%02d)
+                         by interpolating `pattern % indices.next()`
+                         (default: split.%02d)
+      --version          show program's version number and exit
+
 
 ## TODO
 
 * Support reading (flags `r` and `r+`).
 
+
 ## Development
 
 This package is published to PyPI at [pypi.python.org/pypi/filesequence](https://pypi.python.org/pypi/filesequence/).
 
-Instructions for publishing:
+* Run `python publish.py -n` to print out the suggested publish sequence.
+* Run `python publish.py` to run the suggested publish sequence.
 
-1. Convert latest README Markdown to reStructuredText, because PyPI can't handle anything but reStructuredText
-
-        pandoc README.md -o .README.rst
-
-2. Increase version in [`filesequence/version.py`](filesequence/version.py).
-
-        -__version__ = '0.1.2'
-        +__version__ = '0.1.3'
-
-3. Rebuild since you changed the version
-
-        python setup.py develop
-
-4. Commit your staged changes (presumably you changed something)
-
-        git commit
-
-5. Tag latest
-
-        git tag -a v`python setup.py --version` -m `python setup.py --version`
-
-6. Push (Github will automatically prepare the static version, if needed)
-
-        git push
-
-7. Publish (will be on PyPI, but not every setuptools incarnation will be able to get to it)
-
-        python setup.py register
-
-8. Upload (add to [PyPI/simple](https://pypi.python.org/simple/filesequence/),
-   which allows some of the older distutils / setuptools distribution to install it)
-
-        python setup.py sdist upload
 
 ## License
 
