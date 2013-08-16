@@ -1,6 +1,6 @@
 {
   "name": "filesequence",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "Write to an indexed sequence of files using the standard Python file API",
   "homepage": "https://github.com/chbrown/filesequence",
   "repository": {
