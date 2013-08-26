@@ -31,5 +31,9 @@ setup(
         'Topic :: System :: Filesystems',
         'Topic :: Text Processing :: General',
     ],
+    tests_require=[
+        'nose',
+    ],
+    test_suite='nose.collector',
     **kw
 )
