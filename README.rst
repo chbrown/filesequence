@@ -1,7 +1,7 @@
 File sequences
 --------------
 
-A ``FileSequence`` allows you writing to multiple files using standard
+A ``FileSequence`` allows you to write to multiple files using standard
 Python file descriptor read / write functionality.
 
 You specify the file size limit and naming scheme when opening the
