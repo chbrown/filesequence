@@ -14,8 +14,8 @@ call ``write()`` once for each line. If you want behavior more like
 BSD's ``split`` command, you can write one byte at a time. Though, at
 that rate, ``split`` is probably the better choice.
 
-Installation
-~~~~~~~~~~~~
+Installation |PyPI version|
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ::
 
@@ -104,3 +104,6 @@ License
 
 Copyright (c) 2013 Christopher Brown. `MIT
 Licensed <https://raw.github.com/chbrown/filesequence/master/LICENSE>`__.
+
+.. |PyPI version| image:: https://badge.fury.io/py/filesequence.png
+   :target: http://badge.fury.io/py/filesequence

@@ -6,9 +6,10 @@ You specify the file size limit and naming scheme when opening the sequence, but
 
 Each call to the opened FileSequence's `write` function will potentially create a new file, if the chunk you want to write will push the file over the limit. So if you want to only split files on newlines, call `write()` once for each line. If you want behavior more like BSD's `split` command, you can write one byte at a time. Though, at that rate, `split` is probably the better choice.
 
-### Installation
+### Installation [![PyPI version](https://badge.fury.io/py/filesequence.png)](http://badge.fury.io/py/filesequence)
 
     pip install filesequence
+
 
 ### API
 
@@ -38,6 +39,7 @@ Want to keep going?
         ...
 
 The 'a' flag will make the sequence jump to the last existing file, and start writing from there.
+
 
 ### Bonus
 
