@@ -102,6 +102,3 @@ def test_mobydick_write(limit=1000):
         assert 12 < len(filenames) <= 14, '1kb splits should take 13--14 files.'
         for filename in filenames:
             assert os.path.getsize(filename) <= limit, '%s should be less than %d bytes' % (filename, limit)
-
-
-

@@ -73,6 +73,17 @@ This package is published to PyPI at [pypi.python.org/pypi/filesequence](https:/
 * Run `python publish.py` to run the suggested publish sequence.
 
 
+### Testing
+
+Continuous integration:
+
+[![Travis CI Build Status](https://travis-ci.org/chbrown/filesequence.png?branch=master)](https://travis-ci.org/chbrown/filesequence)
+
+Or run tests locally:
+
+    nosetests
+
+
 ## License
 
 Copyright (c) 2013 Christopher Brown. [MIT Licensed](https://raw.github.com/chbrown/filesequence/master/LICENSE).
