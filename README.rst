@@ -99,6 +99,19 @@ This package is published to PyPI at
    sequence.
 -  Run ``python publish.py`` to run the suggested publish sequence.
 
+Testing
+~~~~~~~
+
+Continuous integration:
+
+|Travis CI Build Status|
+
+Or run tests locally:
+
+::
+
+    nosetests
+
 License
 -------
 
@@ -107,3 +120,5 @@ Licensed <https://raw.github.com/chbrown/filesequence/master/LICENSE>`__.
 
 .. |PyPI version| image:: https://badge.fury.io/py/filesequence.png
    :target: http://badge.fury.io/py/filesequence
+.. |Travis CI Build Status| image:: https://travis-ci.org/chbrown/filesequence.png?branch=master
+   :target: https://travis-ci.org/chbrown/filesequence
