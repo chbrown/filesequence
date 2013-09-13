@@ -17,7 +17,7 @@ def main():
     parser.add_argument('--verbose', action='store_true', help='Print debug messages')
     opts = parser.parse_args()
 
-    loglevel = logging.INFO if opts.verbose else logging.VERBOSE
+    loglevel = logging.DEBUG if opts.verbose else logging.INFO
     logging.basicConfig(format='%(levelname)s: %(message)s', level=loglevel)
 
     filenames = filesequence.interpolator(opts.pattern, xrange(1000))
