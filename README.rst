@@ -95,9 +95,13 @@ Development
 This package is published to PyPI at
 `pypi.python.org/pypi/filesequence <https://pypi.python.org/pypi/filesequence/>`__.
 
--  Run ``python publish.py -n`` to print out the suggested publish
-   sequence.
--  Run ``python publish.py`` to run the suggested publish sequence.
+Typical publish process:
+
+1. ``pandoc README.md -o README.rst``
+2. If needed, ``git commit ...``
+3. ``npm version patch``
+4. ``git push``
+5. ``python setup.py register sdist upload``
 
 Testing
 ~~~~~~~
@@ -106,7 +110,7 @@ Continuous integration:
 
 |Travis CI Build Status|
 
-Or run tests locally:
+Or run tests locally (after installing):
 
 ::
 

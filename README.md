@@ -69,8 +69,13 @@ A `filesequence` script will be installed to your `PATH`. This script reads STDI
 
 This package is published to PyPI at [pypi.python.org/pypi/filesequence](https://pypi.python.org/pypi/filesequence/).
 
-* Run `python publish.py -n` to print out the suggested publish sequence.
-* Run `python publish.py` to run the suggested publish sequence.
+Typical publish process:
+
+1. `pandoc README.md -o README.rst`
+2. If needed, `git commit ...`
+2. `npm version patch`
+3. `git push`
+4. `python setup.py register sdist upload`
 
 
 ### Testing
@@ -79,7 +84,7 @@ Continuous integration:
 
 [![Travis CI Build Status](https://travis-ci.org/chbrown/filesequence.png?branch=master)](https://travis-ci.org/chbrown/filesequence)
 
-Or run tests locally:
+Or run tests locally (after installing):
 
     nosetests
 
